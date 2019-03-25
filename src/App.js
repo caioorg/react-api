@@ -1,9 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+'use strict'
 
-const title = 'My Minimal React Webpack Babel Setup';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.scss'
+
+const title = 'My Minimal React Webpack Babel Setup'
 
 ReactDOM.render(
   <div>{title}</div>,
-  document.getElementById('app')
+  document.querySelector('[data-js="app"]')
 );

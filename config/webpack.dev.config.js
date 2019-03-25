@@ -9,15 +9,25 @@ var config =  {
     },
 
     module: {
-        rules: [{
-            test: /\.js|jsx$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-                presets: ['@babel/react'],
-                plugins: ['@babel/proposal-class-properties']
+        rules: [
+            {
+                test: /\.js|jsx$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/react'],
+                    plugins: ['@babel/proposal-class-properties']
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
             }
-        }]
+        ]
     },
     
     resolve: {
