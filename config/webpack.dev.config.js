@@ -2,7 +2,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({ template: './public/index.html' });
 
 var config =  {
-    entry: './src/App.js',
+    entry: './src/index.js',
     output: {
         path: __dirname + '/public',
         filename: 'bundle.js'

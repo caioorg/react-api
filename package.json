@@ -27,7 +27,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development --open",
     "build": "webpack"
   },
   "author": "Caio Almeida",

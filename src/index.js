@@ -2,11 +2,9 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
-
-const title = 'My Minimal React Webpack Babel Setup'
+import App from './components/App'
 
 ReactDOM.render(
-  <div>{title}</div>,
+  <App />,
   document.querySelector('[data-js="app"]')
 );
