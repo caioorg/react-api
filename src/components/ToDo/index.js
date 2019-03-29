@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import FormToDo from './Form'
+import services from '../../services'
+
+const URL = 'http://localhost:3003/api/v1'
 
 export default class Todo extends Component {
     constructor(props)  {
@@ -10,7 +13,9 @@ export default class Todo extends Component {
     }
 
     handleAdd() {
-        console.log(this.state.description)
+        const description = this.state.description
+        const result = services.postCreated(description)
+        console.log(result)
     }
 
     handleChange(e) {
