@@ -4,6 +4,7 @@
   "description": "React with fetch API Maps - Republica do CEP",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
