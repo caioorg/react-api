@@ -12,13 +12,15 @@ export default class Todo extends Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.handleDone = this.handleDone.bind(this)
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
+        this.handleClear = this.handleClear.bind(this)
         this.refreshList()
     }
 
-    refreshList() {
-        services.listToDo()
-            .then(res => this.setState({ ...this.state, description: '', list: res}))
-        
+    refreshList(description = '') {
+        const search = description ? description : ''
+        services.listToDo(search)
+            .then(res => this.setState({ ...this.state, description , list: res}))   
     }
 
     handleAdd() {
@@ -33,17 +35,25 @@ export default class Todo extends Component {
 
     handleRemove(todo) {
         services.deleteToDo(todo._id)
-            .then(res => this.refreshList())
+            .then(res => this.refreshList(this.state.description))
     }
 
     handleDone(todo) {
         services.doneToDo(todo)
-            .then(res => this.refreshList())
+            .then(res => this.refreshList(this.state.description))
     }
 
     handleMarkAsPending(todo) {
         services.notDoneToDo(todo)
-            .then(res => this.refreshList())
+            .then(res => this.refreshList(this.state.description))
+    }
+
+    handleSearch() {
+        this.refreshList(this.state.description)
+    }
+
+    handleClear() {
+        this.refreshList()
     }
     
     render() {
@@ -53,6 +63,8 @@ export default class Todo extends Component {
                     handleAdd={this.handleAdd}
                     description={this.state.description}
                     handleChange={this.handleChange}
+                    handleSearch={this.handleSearch}
+                    handleClear={this.handleClear}
                 />
                 <ListToDo 
                     list={this.state.list}

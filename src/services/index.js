@@ -17,12 +17,20 @@ const postCreated = (description) => {
     .then(resp => resp)
 }
 
-const listToDo = () => {
-    return instance({
-        method: 'GET',
-        url: '/api/v1/?sort=created'
-    })
-    .then(res => res.data)
+const listToDo = (search) => {
+    if(search) {
+        return instance({
+            method: 'GET',
+            url: `/api/v1/?sort=created&description__regex=/${search}/`
+        })
+        .then(res => res.data)
+    } else {
+        return instance({
+            method: 'GET',
+            url: '/api/v1/?sort=created'
+        })
+        .then(res => res.data)
+    }
 }
 
 const deleteToDo = (id) => {

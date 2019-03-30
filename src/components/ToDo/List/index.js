@@ -19,13 +19,13 @@ export default props => {
     }
 
     return (
-        <table className="table">
-            <thead>
+        <table className="table table-striped">
+            <thead className="thead-dark">
                 <tr>
                     <th>
-                        Descrição
+                        Tarefas
                     </th>
-                    <th>
+                    <th className="table-actions">
                         Ações
                     </th>
                 </tr>
