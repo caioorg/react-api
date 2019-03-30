@@ -8,7 +8,7 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
 
 const postCreated = (description) => {
     return instance({
-        method: 'post',
+        method: 'POST',
         data: {
             description: description
         },
@@ -17,6 +17,50 @@ const postCreated = (description) => {
     .then(resp => resp)
 }
 
+const listToDo = () => {
+    return instance({
+        method: 'GET',
+        url: '/api/v1/?sort=created'
+    })
+    .then(res => res.data)
+}
+
+const deleteToDo = (id) => {
+    return instance({
+        method: 'DELETE',
+        url: `/api/v1/${id}`
+    })
+    .then(res => res)
+}
+
+const doneToDo = (todo) => {
+    return instance({
+        method: 'PUT',
+        url: `/api/v1/${todo._id}`,
+        data: {
+            ...todo,
+            done: true
+        },
+    })
+    .then(res => res)
+}
+
+const notDoneToDo = (todo) => {
+    return instance({
+        method: 'PUT',
+        url: `/api/v1/${todo._id}`,
+        data: {
+            ...todo,
+            done: false
+        },
+    })
+    .then(res => res)
+}
+
 export default {
-    postCreated
+    postCreated,
+    listToDo,
+    deleteToDo,
+    doneToDo,
+    notDoneToDo
 }
