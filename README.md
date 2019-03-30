@@ -6,9 +6,10 @@ For those of you who like to learn and are starting the react path, some mini pr
 
 *Note: For the project works it needs to use an api node is available in this [link](https://github.com/caioorg/api-node.git)*
 
-- React support via [react](https://babeljs.io)
+- React support via support [react](https://babeljs.io)
 - Redux for state management among others, support via [redux](https://redux.js.org/)
-- Axios support via [axios](https://github.com/axios/axios)
+- React Router via support [react-router](https://github.com/ReactTraining/react-router/tree/v3/docs)
+- Axios support via support [axios](https://github.com/axios/axios)
 
 Getting Started
 ---------------
