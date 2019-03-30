@@ -1,4 +1,4 @@
-React Projetc's - Boilerplate
+React Projects - Boilerplate
 ======================================
 
 
