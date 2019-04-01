@@ -2,7 +2,10 @@ import React from 'react'
 import ButtonAction from '../../Utility/buttonAction'
 import './index.scss'
 
-export default props => {
+import { connect } from 'react-redux'
+
+
+const ToDoList = props => {
 
     const renderRows = () => {
         const list = props.list || []
@@ -36,3 +39,7 @@ export default props => {
         </table>
     )
 }
+
+const mapStateToProps = state => ({ list: state.todo.list })
+
+export default connect(mapStateToProps)(ToDoList)

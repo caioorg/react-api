@@ -8,7 +8,6 @@ export default class Todo extends Component {
         super(props)
         this.state = { description: '', list: []}
         this.handleAdd = this.handleAdd.bind(this)
-        this.handleChange = this.handleChange.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.handleDone = this.handleDone.bind(this)
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
@@ -27,10 +26,6 @@ export default class Todo extends Component {
         const description = this.state.description
         services.postCreated(description)
             .then(res => this.refreshList())
-    }
-
-    handleChange(e) {
-        this.setState({ ...this.state, description: e.target.value })
     }
 
     handleRemove(todo) {
@@ -61,13 +56,10 @@ export default class Todo extends Component {
             <div className="container">
                 <FormToDo 
                     handleAdd={this.handleAdd}
-                    description={this.state.description}
-                    handleChange={this.handleChange}
                     handleSearch={this.handleSearch}
                     handleClear={this.handleClear}
                 />
                 <ListToDo 
-                    list={this.state.list}
                     handleRemove={this.handleRemove}
                     handleDone={this.handleDone}
                     handleMarkAsPending={this.handleMarkAsPending}

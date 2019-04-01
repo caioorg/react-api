@@ -3,7 +3,11 @@ import Grid from '../../Utility/gridSetting'
 import ButtonAction from '../../Utility/buttonAction'
 import './index.scss'
 
-export default props => (
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeDescription } from '../../../store/actions/toDoAction'
+
+const FormToDo = props => (
     <div role='form' className='toDoForm'>
         <div className="row">
             <Grid cols="8 8 8 8 8">
@@ -12,7 +16,7 @@ export default props => (
                     className="form-control"
                     placeholder="Adicione uma tarefa"
                     value={props.description}
-                    onChange={props.handleChange}
+                    onChange={props.changeDescription}
                 />
             </Grid>
             <Grid cols="4 4 4 4 4">
@@ -23,3 +27,8 @@ export default props => (
         </div>
     </div>
 )
+
+const mapStateToProps = state => ({ description: state.todo.description })
+const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormToDo)
