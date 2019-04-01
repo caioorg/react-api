@@ -5,7 +5,7 @@ import './index.scss'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeDescription, searchToDO } from '../../../store/actions/toDoAction'
+import { changeDescription, searchToDO, addToDo } from '../../../store/actions/toDoAction'
 
 class FormToDo extends Component {
     constructor(props) {
@@ -14,8 +14,10 @@ class FormToDo extends Component {
     }
 
     keyHandler(e) {
+        const { addToDo, searchToDO, description } = this.props
+
         if (e.key === 'Enter') {
-            e.shiftKey ? this.props.handleSearch() : this.props.handleAdd()
+            e.shiftKey ? searchToDO() : addToDo(description)
         } else if (e.key === 'Escape') {
             props.handleClear()
         }
@@ -26,6 +28,8 @@ class FormToDo extends Component {
     }
 
     render() {
+        const { addToDo, searchToDO, description } = this.props
+
         return (
             <div role='form' className='toDoForm'>
                 <div className="row">
@@ -39,8 +43,8 @@ class FormToDo extends Component {
                         />
                     </Grid>
                     <Grid cols="4 4 4 4 4">
-                        <ButtonAction style="success" onClick={this.props.handleAdd} text="Adicionar" />
-                        <ButtonAction style="primary" onClick={this.props.handleSearch} text="Pesquisar" />
+                        <ButtonAction style="success" onClick={() => addToDo(description)} text="Adicionar" />
+                        <ButtonAction style="primary" onClick={() => searchToDO()} text="Pesquisar" />
                         <ButtonAction style="secondary" onClick={this.props.handleClear} text="Limpar" />
                     </Grid>
                 </div>
@@ -51,6 +55,6 @@ class FormToDo extends Component {
 
 
 const mapStateToProps = state => ({ description: state.todo.description })
-const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription, searchToDO }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription, searchToDO, addToDo }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormToDo)

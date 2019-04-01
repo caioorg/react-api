@@ -12,3 +12,11 @@ export const searchToDO = () => {
         payload: request
     }
 }
+
+export const addToDo = description => {
+    const request = services.postCreated(description)
+    return {
+        type: 'TODO_ADDED',
+        payload: request
+    }
+}
