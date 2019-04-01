@@ -39,7 +39,7 @@ var config =  {
     devServer: {
         inline: true,
         contentBase: './public',
-        port: 3333
+        port: 1234
     }
 }
 

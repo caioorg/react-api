@@ -1,0 +1,23 @@
+.table {
+    
+    .doneToDo {
+        color: #aaaaaa;
+        text-decoration: line-through;
+    }
+
+    button {
+        margin: 0 10px;
+        
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    
+    td {
+        vertical-align: middle
+    }
+
+    &-actions {
+        width: 20%;
+    }
+}
