@@ -53,6 +53,26 @@ If you are intent on figuring out how to build a ToDo List without using Redux f
   npm run dev
 ```
 
+If you are determined to figure out how to build a ToDO List with Redux, follow these steps.
+
+
+```sh
+# clone it
+  git clone https://github.com/caioorg/react-api
+  cd react-api
+
+# Make it your own
+  rm -rf .git && git init && npm init
+
+# Install dependencies
+  npm install
+
+# Change to branch ToDo
+  git checkout ToDoRedux
+  
+# Start project development
+  npm run dev
+```
 
 License
 -------
