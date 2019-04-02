@@ -13,10 +13,15 @@ export const searchToDO = () => {
     }
 }
 
-export const addToDo = description => {
-    const request = services.postCreated(description)
-    return {
-        type: 'TODO_ADDED',
-        payload: request
+export const addToDo = (description) => {
+    return dispatch => {
+        const request = services.postCreated(description)
+            .then(
+                resp => dispatch({
+                    type: 'TODO_ADDED',
+                    payload: resp
+                })
+            )
+            .then(resp => dispatch(searchToDO()))
     }
 }
